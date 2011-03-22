@@ -190,7 +190,7 @@ void SendUDPSkeletalData(XnUserID player) {
           leftFoot.position.X, leftFoot.position.Y, leftFoot.position.Z, 
           rightFoot.position.X, rightFoot.position.Y, rightFoot.position.Z, 
           head.position.X, head.position.Y, head.position.Z);
-*/
+
 	sprintf(packet, "lhx%0.3fy%0.3fz%0.3f rhx%0.3fy%0.3fz%0.3f lex%0.3fy%0.3fz%0.3f rex%0.3fy%0.3fz%0.3f lsx%0.3fy%0.3fz%0.3f rsx%0.3fy%0.3fz%0.3f ttx%0.3fy%0.3fz%0.3f lix%0.3fy%0.3fz%0.3f rix%0.3fy%0.3fz%0.3f lkx%0.3fy%0.3fz%0.3f rkx%0.3fy%0.3fz%0.3f lfx%0.3fy%0.3fz%0.3f rfx%0.3fy%0.3fz%0.3f hhx%0.3fy%0.3fz%0.3f ",
           leftHand.position.X, leftHand.position.Y, leftHand.position.Z,
           rightHand.position.X, rightHand.position.Y, rightHand.position.Z,
@@ -216,7 +216,6 @@ void SendUDPSkeletalData(XnUserID player) {
           rightFoot.position.X, rightFoot.position.Y, rightFoot.position.Z, 
           head.position.X, head.position.Y, head.position.Z);
 
-/*
 	sprintf(packet, "lhx%0.3fy%0.3fz%0.3f rhx%0.3fy%0.3fz%0.3f lfx%0.3fy%0.3fz%0.3f rfx%0.3fy%0.3fz%0.3f hhx%0.3fy%0.3fz%0.3f",
           leftHand.position.X, leftHand.position.Y, leftHand.position.Z,
           rightHand.position.X, rightHand.position.Y, rightHand.position.Z,
@@ -225,7 +224,17 @@ void SendUDPSkeletalData(XnUserID player) {
           head.position.X, head.position.Y, head.position.Z);
 */
 	//printf("sending data: %s\n", packet);
+
+	// Only sending hand positions.  Also removing the prefixes that indicate which body part (having problems in PD removing that at the moment).  
+	// Trivial to parse in PD I'm sure -- just getting late and I want to see how well this works first.
+
+	sprintf(packet, "%0f %0f %0f %0f\n",
+          leftHand.position.X,
+	  leftHand.position.Y,
+	  rightHand.position.X,
+	  rightHand.position.Y);
 	SUDP_SendMsg(packet, strlen(packet));
+
 }
 
 // this function is called each frame

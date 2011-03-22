@@ -1,0 +1,11 @@
+Just an excuse to learn PD and some music theory in a hands on manner.  JB made the integration between the kinnect and PD easy by pushing out kinnect skeletal data via UDP.
+
+Instructions: 
+
+Fire up the UDPBackend per regular instructions (don't forget to do the psi pose). Load up PD and open the appropriate .pd file.  Built in Ubuntu 10.10.
+
+simplehandtrack.pd: x coord of each hand determines frequency of tone, y coord determines volume level.  Trivial example to get the ball rolling.
+
+Rob
+robscanlon.com
+
